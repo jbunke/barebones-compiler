@@ -51,11 +51,11 @@ public class Compiler {
     return moddedCode;
   }
 
-  public static Instance parseCode(String fileName) {
+  static Instance parseCode(String fileName) {
     return parseCode(modifyCode(readCode(fileName)));
   }
 
-  public static Instance parseCode(List<String> code) {
+  private static Instance parseCode(List<String> code) {
     int curLine = 0;
 
     // Determine INCLUDED CLASSES
@@ -155,8 +155,8 @@ public class Compiler {
 
         List<Variable> argList = new ArrayList<>();
         Map<String, Variable> argMap = new HashMap<>();
-        for (int j = 0; j < arguments.size(); j++) {
-          Line argLine = new Line(arguments.get(j));
+        for (String argument : arguments) {
+          Line argLine = new Line(argument);
           String type = argLine.substring(0, argLine.get().indexOf(' '));
           argLine.shiftPast(" ");
           String name = argLine.get();
@@ -177,7 +177,7 @@ public class Compiler {
             functions, code);
   }
 
-  public static Object run(Instance codeClass, FunctionID functionID,
+  static Object run(Instance codeClass, FunctionID functionID,
                            List<Object> args) {
     if (!codeClass.getFunctions().containsKey(functionID)) {
       printError(errorType.Runtime, "compiler_structures.Function '" +
@@ -465,13 +465,14 @@ public class Compiler {
       }
 
       // VARIABLES IN SCOPE
-      // if a variable is out of scope, remove it from vars map
+      /* if a variable is out of scope, remove it from vars map
       Set<String> varKeySet = vars.keySet();
       for (String key : varKeySet) {
         if (!vars.get(key).inScope(curLine)) {
           // vars.remove(key); - this might be problematic
         }
       }
+      */
     }
 
     return null;
