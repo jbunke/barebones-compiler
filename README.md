@@ -34,6 +34,8 @@ followed by a bracket-enclosed and comma-separated argument list of types and na
       }
     }
 
+Local variables are declared with `var` keyword as opposed to fields with the `field` keyword.
+
 ### Control flow
 
 If statement:
