@@ -9,7 +9,7 @@ public class RunClass {
 
   public static void main(String[] args) {
     // Filepath to testing user program here:
-    String fileLocation = "resources\\user-programs\\TestFile3.bb";
+    String fileLocation = "resources\\user-programs\\FlipProgram.bb";
     Instance codeClass = Compiler.parseCode(fileLocation);
     List<Variable> arguments = new ArrayList<>();
     List<Object> definedArgs = new ArrayList<>();
