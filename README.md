@@ -78,8 +78,8 @@ While-loop statement:
 
 Examples:
 
-    > #"start" := 5
-    > "start"@2 := "a"
-    > "start"++"this"++"off"++"right" := "startthisoffright"
+    > #"start" -> 5
+    > "start"@2 -> "a"
+    > "start"++"this"++"off"++"right" -> "startthisoffright"
     > 5 / 2 := 2
-    > #"testing" - 3 := 4
+    > #"testing" - 3 -> 4
