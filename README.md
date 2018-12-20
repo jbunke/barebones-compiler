@@ -1,5 +1,5 @@
 # Barebones Compiler
-The Barebones Compiler is a high-level language to Java compiler that I wrote in the summer of 2018 as a proof of concept.
+The Barebones Compiler is a high-level language to Java [transpiler](https://en.wikipedia.org/wiki/Source-to-source_compiler) that I wrote in the summer of 2018 as a proof of concept.
 Barebones is a rudimentary language with a C-based syntax.
 
 ## Barebones Syntax Overview:
