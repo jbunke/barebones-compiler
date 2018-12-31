@@ -534,14 +534,6 @@ public class Compiler {
       return in.nextLine();
     }
 
-    // STRINGS
-    if (expression.length() >= 2) {
-      if (expression.charAt(0) == '"' &&
-              expression.charAt(expression.length() - 1) == '"') {
-        return expression.substring(1, expression.length() - 1);
-      }
-    }
-
     // VARIABLE (in current class)
     if (vars != null) {
       if (vars.containsKey(expression)) {
@@ -725,6 +717,15 @@ public class Compiler {
                   String.valueOf(evaluate(expression.substring(recentOpen + 1, i),
                           vars, functions, includedClasses, codeClass)) +
                   expression.substring(i + 1);
+      }
+    }
+
+    // STRINGS
+    if (expression.length() >= 2) {
+      if (expression.charAt(0) == '"' &&
+              expression.charAt(expression.length() - 1) == '"' &&
+              expression.substring(1).indexOf('"') == expression.length() - 2) {
+        return expression.substring(1, expression.length() - 1);
       }
     }
 
@@ -1096,7 +1097,7 @@ public class Compiler {
     boolean periodPlaced = false;
 
     for (int i = 0; i < s.length(); i++) {
-      if (s.charAt(0) == '-') {
+      if (s.charAt(0) == '-' && i == 0) {
         i++;
       }
 
