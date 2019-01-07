@@ -23,28 +23,39 @@ class String {
     return newS;
   }
 
-  // broken
-  function bool contains(String search_in, String search_for) {
+  function int indexOf(String of, String in) {
     var int index = 0;
-    var int partial_match = 0;
-    while (index < (#search_in)) {
-      if ((search_in @ index) == (search_for @ partial_match)) {
-        partial_match = partial_match + 1;
-        index = index + 1;
-      } else if (partial_match > 0) {
-        index = index - partial_match + 1;
-        partial_match = 0;
+    var int match = 0;
+    while (index < (#in)) {
+      if (of @ match == in @ (index + match)) {
+        match = match + 1;
+        if (match == (#of)) {
+          return index;
+        }
       } else {
-        partial_match = 0;
+        match = 0;
         index = index + 1;
-      }
-
-      if (partial_match == (#search_for)) {
-        return true;
       }
     } loop;
-    return false;
+    return -1;
   }
+
+  function bool contains(String of, String in) {
+      var int index = 0;
+      var int match = 0;
+      while (index < (#in)) {
+        if (of @ match == in @ (index + match)) {
+          match = match + 1;
+          if (match == (#of)) {
+            return true;
+          }
+        } else {
+          match = 0;
+          index = index + 1;
+        }
+      } loop;
+      return false;
+    }
 
   function String substring(String original, int start_index) {
     var String res = "";

@@ -9,9 +9,14 @@ import java.util.Scanner;
 public class RunClass {
 
   public static void main(String[] args) {
-    System.out.println("Specify a Barebones filepath:");
-    Scanner in = new Scanner(System.in);
-    String fileLocation = in.nextLine(); // resources/user-programs/FlipProgram.bb
+    String fileLocation;
+    if (args != null && args.length == 1) {
+      fileLocation = args[0];
+    } else {
+      System.out.println("Specify a Barebones filepath:");
+      Scanner in = new Scanner(System.in);
+      fileLocation = in.nextLine();
+    }
     Instance codeClass = Compiler.parseCode(fileLocation);
     List<Variable> arguments = new ArrayList<>();
     List<Object> definedArgs = new ArrayList<>();
